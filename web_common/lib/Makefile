@@ -1,6 +1,7 @@
 include ../../Commons.mk
 
-SUBDIRS = $(ALL_LIBS)/utils \
+SUBDIRS = $(ALL_LIBS)/utils		\
+		  $(ALL_LIBS)/http		\
 		  $(ALL_LIBS)/session		  
 
 include ../../Defines.mk

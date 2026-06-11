@@ -15,7 +15,7 @@ Session::Session()
 , expirySystemTime_(std::chrono::system_clock::time_point{})
 , expirySteadyTime_(std::chrono::steady_clock::time_point{})
 , ttl_(std::chrono::seconds(0))
-, role_(UserRole::UNKNOWN)
+, role_(UserRoleUtil::UserRole::UNKNOWN)
 {
 }
 
@@ -24,7 +24,7 @@ Session::Session(std::string sessionId,
     std::string sessionTokenCSRF, 
     std::chrono::system_clock::time_point createdAt,
     std::chrono::system_clock::time_point expiryTime,
-    UserRole role)
+    UserRoleUtil::UserRole role)
 : sessionId_(std::move(sessionId))
 , sessionTicket_(std::move(sessionTicket))
 , sessionTokenCSRF_(std::move(sessionTokenCSRF))
@@ -108,12 +108,12 @@ std::chrono::steady_clock::time_point Session::GetExpiryTimeStamp() const
     return expirySteadyTime_;
 }
 
-UserRole Session::GetRole() const
+UserRoleUtil::UserRole Session::GetRole() const
 {
     return role_;
 }
 
-void Session::SetRole(UserRole role)
+void Session::SetRole(UserRoleUtil::UserRole role)
 {
     role_ = role;
 }
@@ -146,7 +146,7 @@ SessionPtr CreateSessionObject(std::chrono::steady_clock::duration defaultTtl)
     auto expirySys = nowSys + std::chrono::duration_cast<std::chrono::system_clock::duration>(defaultTtl);
     
     return std::make_shared<web::session::Session>(
-        web::session::MakeSessionId(), "", "", nowSys, expirySys, web::session::UserRole::UNKNOWN
+        web::session::MakeSessionId(), "", "", nowSys, expirySys, web::session::UserRoleUtil::UserRole::UNKNOWN
     );
 }
 
@@ -155,7 +155,7 @@ SessionPtr CreateSessionObject(std::string id,
     std::string csrf, 
     std::chrono::system_clock::time_point createdAt,
     std::chrono::system_clock::time_point expiryTime,
-    web::session::UserRole role) 
+    web::session::UserRoleUtil::UserRole role) 
 {
     return std::make_shared<web::session::Session>(
         std::move(id), std::move(ticket), std::move(csrf), createdAt, expiryTime, role

@@ -5,7 +5,7 @@ namespace web
 namespace session
 {
 
-std::string ToString(UserRole role)
+std::string UserRoleUtil::ToString(UserRole role)
 {
     switch (role)
     {
@@ -21,12 +21,12 @@ std::string ToString(UserRole role)
     }
 }
 
-std::string ToString(uint8_t role)
+std::string UserRoleUtil::ToString(uint8_t role)
 {
     return ToString(ToRoleClass(role));
 }
 
-UserRole FromString(const std::string& role)
+UserRoleUtil::UserRole UserRoleUtil::FromString(const std::string& role)
 {
     if (role == "user")  return UserRole::USER;
     if (role == "moder") return UserRole::MODER;
@@ -34,12 +34,12 @@ UserRole FromString(const std::string& role)
     return UserRole::UNKNOWN;
 }
 
-uint8_t ToUInt8(UserRole role)
+uint8_t UserRoleUtil::ToUInt8(UserRole role)
 {
     return static_cast<uint8_t>(role);
 }
 
-UserRole ToRoleClass(uint8_t role)
+UserRoleUtil::UserRole UserRoleUtil::ToRoleClass(uint8_t role)
 {
     switch (role)
     {

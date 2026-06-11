@@ -40,7 +40,7 @@ struct SessionInfo
     std::string sessionId;       ///< Уникальный идентификатор сессии.
     std::string sessionTicket;   ///< Авторизационный зашифрованный тикет пользователя.
     std::string sessionTokenCSRF;///< Токен валидации межсайтовой подделки запросов.
-    UserRole role;               ///< Объект роли, ассоциированный с сессией.
+    UserRoleUtil::UserRole role; ///< Объект роли, ассоциированный с сессией.
     std::chrono::system_clock::time_point createdAt;  ///< Время создания сессии (календарное).
     std::chrono::system_clock::time_point expiryTime; ///< Время автоматического истечения сессии (календарное).
     bool isExpired;              ///< Флаг, указывающий, истек ли срок действия сессии.
@@ -149,7 +149,7 @@ private:
      * @param callback Каллбэк закрытия сессии.
      * @return Строка с сгенерированным SessionId.
      */
-    std::string CreateSession(UserRole role, SessionCallback callback = nullptr);
+    std::string CreateSession(UserRoleUtil::UserRole role, SessionCallback callback = nullptr);
 
     /**
      * @brief Находит внутренний объект сессии по его идентификатору.

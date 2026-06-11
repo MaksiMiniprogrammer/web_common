@@ -57,7 +57,7 @@ public:
         std::string sessionTokenCSRF, 
         std::chrono::system_clock::time_point createdAt,
         std::chrono::system_clock::time_point expiryTime,
-        UserRole role);
+        UserRoleUtil::UserRole role);
 
     /**
      * @brief Деструктор по умолчанию.
@@ -149,13 +149,13 @@ public:
      * @brief Получить объект роли пользователя, связанный с этой сессией.
      * @return Экземпляр UserRole.
      */
-    UserRole GetRole() const;
+    UserRoleUtil::UserRole GetRole() const;
 
     /**
      * @brief Назначить или изменить роль пользователя для текущей сессии.
      * @param role Новый объект роли UserRole.
      */
-    void SetRole(UserRole role);
+    void SetRole(UserRoleUtil::UserRole role);
 
     /**
      * @brief Проверить, проинициализирована ли сессия.
@@ -181,7 +181,7 @@ private:
     std::chrono::system_clock::time_point expirySystemTime_; ///< Календарный дедлайн для записи в БД.
     std::chrono::steady_clock::time_point expirySteadyTime_; ///< Внутренний монотонный дедлайн против сдвигов NTP.
     std::chrono::steady_clock::duration ttl_;                ///< Временной интервал валидности сессии.
-    UserRole role_;                    ///< Роль текущего пользователя в рамках сессии.
+    UserRoleUtil::UserRole role_;                    ///< Роль текущего пользователя в рамках сессии.
 };
 
 /**
@@ -226,6 +226,6 @@ SessionPtr CreateSessionObject(std::string id,
     std::string csrf, 
     std::chrono::system_clock::time_point createdAt,
     std::chrono::system_clock::time_point expiryTime,
-    web::session::UserRole role);
+    web::session::UserRoleUtil::UserRole role);
 
 #endif // WEB_COMMON_LIB_SESSION_SESSION_H_

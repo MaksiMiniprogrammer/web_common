@@ -24,7 +24,7 @@ clear:
 	rm -f $(TARGET_LIB)
 
 $(TARGET_LIB): $(OBJECTS)
-	$(CXX) $(OBJECTS) $(LDFLAGS) $(LPATH) -lsqlite3 -o $@
+	$(CXX) $(OBJECTS) $(LDFLAGS) $(LPATH) -o $@
 
 $(RESULT_OBJ)/$(TARGET)/%.o: $(ALL_LIBS)/$(TARGET)/src/%.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@

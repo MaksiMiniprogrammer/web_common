@@ -1,6 +1,6 @@
 include ../../../Commons.mk
 
-TARGET = session
+TARGET = http
 TARGET_LIB = $(RESULT_LIB)/$(LIB_PREFIX)$(TARGET)$(SH_LIB_SUFFIX)
 
 SOURCES = $(wildcard $(ALL_LIBS)/$(TARGET)/src/*.cpp)

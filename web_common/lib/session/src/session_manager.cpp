@@ -28,17 +28,17 @@ std::optional<SessionInfo> SessionManager::GetSessionInfo(const std::string& ses
 
 std::string SessionManager::CreateAdminSession(SessionCallback callback)
 {
-    return CreateSession(UserRole::ADMIN, callback);
+    return CreateSession(UserRoleUtil::UserRole::ADMIN, callback);
 }
 
 std::string SessionManager::CreateModerSession(SessionCallback callback)
 {
-    return CreateSession(UserRole::MODER, callback);
+    return CreateSession(UserRoleUtil::UserRole::MODER, callback);
 }
 
 std::string SessionManager::CreateUserSession(SessionCallback callback)
 {
-    return CreateSession(UserRole::USER, callback);
+    return CreateSession(UserRoleUtil::UserRole::USER, callback);
 }
 
 bool SessionManager::CloseSession(const std::string& sessionId)
@@ -103,7 +103,7 @@ void SessionManager::CloseAllSessions()
     }
 }
 
-std::string SessionManager::CreateSession(UserRole role, SessionCallback callback)
+std::string SessionManager::CreateSession(UserRoleUtil::UserRole role, SessionCallback callback)
 {
     SessionPtr newSession = CreateSessionObject();
     
