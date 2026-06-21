@@ -16,7 +16,6 @@
  * @file http_response.h
  * @brief Определение класса HttpResponse для формирования контекста HTTP-ответа.
  */
-
 namespace web
 {
 namespace http
@@ -50,12 +49,6 @@ public:
     HttpStatus GetStatus() const;
     void SetStatus(HttpStatus status);
     void SetStatus(uint16_t statusCode);
-
-    /**
-     * @brief Получить текстовое описание статуса (например, "OK" или "Not Found").
-     */
-    std::string GetReasonPhrase() const;
-    
     const HttpHeader& GetHeaders() const;
     HttpHeader& GetHeaders();
 

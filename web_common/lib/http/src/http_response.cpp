@@ -37,13 +37,6 @@ void HttpResponse::SetStatus(uint16_t statusCode)
     status_ = HttpStatusUtil::ToStatusClass(statusCode);
 }
 
-std::string HttpResponse::GetReasonPhrase() const
-{
-    return HttpStatusUtil::ToString(status_);
-}
-
-// --- Заголовки ---
-
 const HttpHeader& HttpResponse::GetHeaders() const
 {
     return headers_;
